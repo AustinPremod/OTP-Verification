@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_24_210227) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_24_222703) do
   create_table "otprequests", force: :cascade do |t|
     t.string "phonenumber"
     t.datetime "created_at", null: false
@@ -29,6 +29,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_24_210227) do
     t.string "otp"
     t.string "counter"
     t.string "otpcounter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "userrecords", force: :cascade do |t|
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

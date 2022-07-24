@@ -3,7 +3,8 @@ module Api
         module Authentication
             class VerifyotpsController < ApplicationController
                 def index
-                    phones=Usernumber.order('created_at DESC');
+                    
+                    phones=Userrecord.order('created_at DESC');
                     render json: {status: '200',message:'Success',data:phones},status: :ok
                 end
                 def create
@@ -13,16 +14,19 @@ module Api
                     phonenumber=requestCall.phonenum
 
                     user = Usernumber.find_by(phone: phonenumber)
+                    num1 = Userrecord.new
                     if user!=nil
-                        if user.otp == otpReq
-                            render json:{status: '200',message:'Success',otp_code:user},status: :ok
+                        if user.otp == otpReq 
+                            num1.phone = user.phone
+                            num1.save
+                            render json:{status: '200',message:'OTP is verified successfully'},status: :ok
                         else
                             user.otpcounter=user.otpcounter.to_i + 1;
                             user.save
                             if(user.otpcounter.to_i>3)
-                                render json:{status: '500',message:'maximum verification attempts exceeded',otp_code:user},status: :ok
+                                render json:{status: '500',message:'maximum verification attempts exceeded'},status: :ok
                             else
-                                render json:{status: '500',message:'Invalid OTP',otp_code:user},status: :ok
+                                render json:{status: '500',message:'Invalid OTP'},status: :ok
                             end
                             
                         end
@@ -33,6 +37,7 @@ module Api
 
                 end
                 private
+                
                 def otpverify_params
                     params.permit(:otp, :phonenum)
                 end
