@@ -1,0 +1,2 @@
+class Otprequest < ApplicationRecord
+end
