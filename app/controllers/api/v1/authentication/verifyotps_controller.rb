@@ -17,9 +17,14 @@ module Api
                     num1 = Userrecord.new
                     if user!=nil
                         if user.otp == otpReq 
-                            num1.phone = user.phone
-                            num1.save
-                            render json:{status: '200',message:'OTP is verified successfully'},status: :ok
+                            if user.updated_at > Time.now - (30*60)
+                                num1.phone = user.phone
+                                num1.save
+                                render json:{status: '200',message:'OTP is verified successfully'},status: :ok
+                            else
+                                render json:{status: '500',message:'Sorry, OTP Timer Expired'},status: :ok
+                            end
+                            
                         else
                             user.otpcounter=user.otpcounter.to_i + 1;
                             user.save
