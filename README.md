@@ -20,7 +20,6 @@ return an error saying maximum verification attempts exceeded. The user has to
 generate a new OTP to verify the phone number again in that case. Come up with
 appropriate success and error response structures.<br /><br />
 
-
 Output<br />
 1. Generate OTP endpoint<br />
 POST  /api/v1/authentication/generateotps<br /><br />
@@ -91,5 +90,11 @@ Response<br />
                }
             ]
 }
+<br /><br />
+Gem File<br />
+ruby "3.0.3"<br />
+gem "sqlite3", "~> 1.4"<br />
+gem "faker"
+<br /><br />
 
 * ...
