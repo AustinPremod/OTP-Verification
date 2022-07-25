@@ -35,7 +35,7 @@ Request Body<br />
 <br /><br />
 Response<br />
 ◉ status -if success will be 200 <br />
-◉ message -describing what is happening<br />
+◉ message -detailed description of the response<br />
 ◉ otp_code -4 digit random number<br /><br />
 {
     "status": "200",
@@ -58,7 +58,7 @@ Request Body<br />
 <br /><br />
 Response<br />
 ◉ status -if success will be 200 <br />
-◉ message -describing what is happening<br />
+◉ message -detailed description of the response<br />
 <br /><br />
 {
     "status": "200",
@@ -71,7 +71,7 @@ GET /api/v1/authentication/verifyotps<br /><br />
 
 Response<br />
 ◉ status -if success will be 200 <br />
-◉ message -describing what is happening<br />
+◉ message -detailed description of the response<br />
 ◉ data-The number which was inserted successfully<br /><br />
 {
     "status": "200",
@@ -94,6 +94,7 @@ Response<br />
 <br /><br />
 Gem File<br />
 ruby "3.0.3"<br />
+gem "rails", "~> 7.0.3", ">= 7.0.3.1"<br />
 gem "sqlite3", "~> 1.4"<br />
 gem "faker"
 <br /><br />
