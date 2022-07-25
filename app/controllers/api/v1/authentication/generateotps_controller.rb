@@ -13,41 +13,34 @@ module Api
                     requestCall.save
                     strNumber=requestCall.phonenumber
                     #strNumber=request.raw_post;
-                    number=strNumber.to_i
-                    counter=Usernumber.count(:id);
-                    
+                    number=strNumber.to_i.abs
 
-                    code =4.times.map{rand(9)}.join;
-                    flag=0;
-                    i=1
-                    while counter>=i
-                        num=Usernumber.find(i);
-                        phoneData=num.phone;
-                        
-                        if phoneData.to_i == number
-                            no=num.counter.to_i + 1;
-                            num.counter=no.to_s;
-                            num.otpcounter="1"
-                            num.otp=code.to_s;
-                            num.save; 
-                            flag=1;
-                            break
-                        end
-                        i=i+1;
-                    end
-                    
-                        if i==counter+1 && number.to_s.length == strNumber.length && flag==0
-                            num1 = Usernumber.new
-                            num1.phone = number.to_s
-                            num1.counter = "1"
-                            num1.otpcounter="1"
-                            num1.otp=code.to_s
-                            num1.save
-                        end
-
+                    #counter=Usernumber.count(:id);
                     user = Usernumber.find_by(phone: number)
-                    if number.to_s.length == strNumber.length 
-                        if user.created_at <= 1.day.ago;
+                    code =4.times.map{rand(9)}.join;
+
+                 
+                    if  user!=nil && number!=nil && user.phone.to_i == number
+                        if  user.counter.to_i<=10 
+                            no=user.counter.to_i + 1;
+                            user.counter=no.to_s;
+                            user.otpcounter="1"
+                            user.otp=code.to_s;
+                            user.save; 
+                        end
+                                
+                    elsif strNumber!=nil && number!=nil && number.to_s.length == strNumber.length && number.to_s.length==10
+                        num1 = Usernumber.new
+                        num1.phone = number.to_s
+                        num1.counter = "1"
+                        num1.otpcounter="1"
+                        num1.otp=code.to_s
+                        num1.save
+
+                    end
+                    user = Usernumber.find_by(phone: number)
+                    if strNumber!=nil && number!=nil && number.to_s.length == strNumber.length && number.to_s.length==10
+                        if user.created_at < 1.day.ago;
                             user.created_at=Time.now;
                             user.counter='1';
                         end

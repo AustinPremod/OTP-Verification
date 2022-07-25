@@ -14,8 +14,9 @@ module Api
                     phonenumber=requestCall.phonenum
 
                     user = Usernumber.find_by(phone: phonenumber)
+                    oldUser = Userrecord.find_by(phone: phonenumber)
                     num1 = Userrecord.new
-                    if user!=nil
+                    if user!=nil && oldUser==nil
                         if user.otp == otpReq 
                             if user.updated_at > Time.now - (30*60)
                                 num1.phone = user.phone
@@ -26,8 +27,11 @@ module Api
                             end
                             
                         else
-                            user.otpcounter=user.otpcounter.to_i + 1;
-                            user.save
+                            if user.otpcounter.to_i<=3
+                                user.otpcounter=user.otpcounter.to_i + 1;
+                                user.save
+                            end
+                           
                             if(user.otpcounter.to_i>3)
                                 render json:{status: '500',message:'maximum verification attempts exceeded'},status: :ok
                             else
@@ -37,7 +41,12 @@ module Api
                         end
                         
                     else
-                        render json:{status: '500',message:'Invalid PhoneNumber',otp_code:''},status: :ok
+                        if oldUser!=nil && oldUser.phone == user.phone
+                            render json:{status: '200',message:'This Number is already validated',otp_code:''},status: :ok
+                        else
+                            render json:{status: '500',message:'Invalid PhoneNumber',otp_code:''},status: :ok
+                        end
+                       
                     end
 
                 end
