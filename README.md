@@ -26,6 +26,7 @@ POST  /api/v1/authentication/generateotps<br /><br />
 
 Request Body<br />
 ◉ The phone number should not have any special characters, symbols and space in between<br />
+◉ Phone Number should not start with a 0
 ◉ phonenumber is stored as a string value<br /><br />
 
 {
