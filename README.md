@@ -7,7 +7,7 @@ a framework like Rails, Sinatra, Django or Flask.
 The API<br />
 Implement a backend web application that provides two API endpoints to verify a phone
 number using OTP and enters that phone number into a User table if the phone number is
-verified.<br />
+verified.<br /><br />
 1.Generates a 4 digit OTP that is valid for 30
 minutes. For this assignment, you don't have to send OTP on an SMS, you can just
 print it in logs. A user can request an OTP at most 10 times a day.<br /><br />
@@ -18,31 +18,31 @@ User record with that particular phone number. If not, return an error saying in
 OTP. A user should not be allowed to send more than 3 invalid OTPs in a row. If so,
 return an error saying maximum verification attempts exceeded. The user has to
 generate a new OTP to verify the phone number again in that case. Come up with
-appropriate success and error response structures.
+appropriate success and error response structures.<br /><br />
 
 
-Output
-1. Generate OTP endpoint
-POST  /api/v1/authentication/generateotps
+Output<br />
+1. Generate OTP endpoint<br />
+POST  /api/v1/authentication/generateotps<br /><br />
 
-Request Body
-◉ The phone number should not have any special characters, symbols and space in between
-◉ phonenumber is stored as a string value
+Request Body<br />
+◉ The phone number should not have any special characters, symbols and space in between<br />
+◉ phonenumber is stored as a string value<br />
 
 {
   "phonenumber":"6196282446"
 }
-
-Response
-◉ status -if success will be 200 
-◉ message -describing what is happening
-◉ otp_code -4 digit random number
+<br /><br />
+Response<br />
+◉ status -if success will be 200 <br />
+◉ message -describing what is happening<br />
+◉ otp_code -4 digit random number<br />
 {
     "status": "200",
     "message": "Success",
     "otp_code": "1270"
 }
-
+<br /><br />
 2. Validate OTP endpoint
 POST /api/v1/authentication/verifyotps
 
