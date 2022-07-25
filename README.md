@@ -26,17 +26,17 @@ Output
 POST  /api/v1/authentication/generateotps
 
 Request Body
-> The phone number should not have any special characters, symbols and space in between
-> phonenumber is stored as a string value
+◉ The phone number should not have any special characters, symbols and space in between
+◉ phonenumber is stored as a string value
 
 {
   "phonenumber":"6196282446"
 }
 
 Response
->status -if success will be 200 
->message -describing what is happening
->otp_code -4 digit random number
+◉ status -if success will be 200 
+◉ message -describing what is happening
+◉ otp_code -4 digit random number
 {
     "status": "200",
     "message": "Success",
@@ -47,9 +47,9 @@ Response
 POST /api/v1/authentication/verifyotps
 
 Request Body
->otp- 4 digit number that you got from the Generate OTP response
->otp- is stored as string
->phonenum- same number you gave to Generate OTP request
+◉ otp- 4 digit number that you got from the Generate OTP response
+◉ otp- is stored as string
+◉ phonenum- same number you gave to Generate OTP request
 
 {
     "otp":"1270",
@@ -57,8 +57,8 @@ Request Body
 }
 
 Response
->status -if success will be 200 
->message -describing what is happening
+◉ status -if success will be 200 
+◉ message -describing what is happening
 {
     "status": "200",
     "message": "OTP is verified successfully"
@@ -69,9 +69,9 @@ Response
 GET /api/v1/authentication/verifyotps
 
 Response
->status -if success will be 200 
->message -describing what is happening
->data-The number which was inserted successfully
+◉ status -if success will be 200 
+◉ message -describing what is happening
+◉ data-The number which was inserted successfully
 {
     "status": "200",
     "message": "Success",
