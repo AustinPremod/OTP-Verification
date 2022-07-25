@@ -4,7 +4,7 @@ Objective
 Create HTTP API endpoints to generate and verify phone numbers using OTPs. You can use
 a framework like Rails, Sinatra, Django or Flask.
 
-The API
+The API<br />
 Implement a backend web application that provides two API endpoints to verify a phone
 number using OTP and enters that phone number into a User table if the phone number is
 verified.
