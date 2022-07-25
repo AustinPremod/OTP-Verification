@@ -27,7 +27,7 @@ POST  /api/v1/authentication/generateotps<br /><br />
 
 Request Body<br />
 ◉ The phone number should not have any special characters, symbols and space in between<br />
-◉ phonenumber is stored as a string value<br />
+◉ phonenumber is stored as a string value<br /><br />
 
 {
   "phonenumber":"6196282446"
@@ -36,42 +36,43 @@ Request Body<br />
 Response<br />
 ◉ status -if success will be 200 <br />
 ◉ message -describing what is happening<br />
-◉ otp_code -4 digit random number<br />
+◉ otp_code -4 digit random number<br /><br />
 {
     "status": "200",
     "message": "Success",
     "otp_code": "1270"
 }
 <br /><br />
-2. Validate OTP endpoint
-POST /api/v1/authentication/verifyotps
+2. Validate OTP endpoint<br />
+POST /api/v1/authentication/verifyotps<br /><br />
 
-Request Body
-◉ otp- 4 digit number that you got from the Generate OTP response
-◉ otp- is stored as string
-◉ phonenum- same number you gave to Generate OTP request
+Request Body<br />
+◉ otp- 4 digit number that you got from the Generate OTP response<br />
+◉ otp- is stored as string<br />
+◉ phonenum- same number you gave to Generate OTP request<br /><br />
 
 {
     "otp":"1270",
     "phonenum":"6196282446"
 }
-
-Response
-◉ status -if success will be 200 
-◉ message -describing what is happening
+<br /><br />
+Response<br />
+◉ status -if success will be 200 <br />
+◉ message -describing what is happening<br />
+<br /><br />
 {
     "status": "200",
     "message": "OTP is verified successfully"
 }
-
+<br /><br />
 *********To view the data which was inserted in the table***********
+<br /><br />
+GET /api/v1/authentication/verifyotps<br /><br />
 
-GET /api/v1/authentication/verifyotps
-
-Response
-◉ status -if success will be 200 
-◉ message -describing what is happening
-◉ data-The number which was inserted successfully
+Response<br />
+◉ status -if success will be 200 <br />
+◉ message -describing what is happening<br />
+◉ data-The number which was inserted successfully<br /><br />
 {
     "status": "200",
     "message": "Success",
