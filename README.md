@@ -7,10 +7,10 @@ a framework like Rails, Sinatra, Django or Flask.
 The API<br />
 Implement a backend web application that provides two API endpoints to verify a phone
 number using OTP and enters that phone number into a User table if the phone number is
-verified.
+verified.<br />
 1.Generates a 4 digit OTP that is valid for 30
 minutes. For this assignment, you don't have to send OTP on an SMS, you can just
-print it in logs. A user can request an OTP at most 10 times a day.
+print it in logs. A user can request an OTP at most 10 times a day.<br /><br />
 
 2.Client sends the OTP received and the phone
 number on which it was received. If the OTP is valid, return success and create a
